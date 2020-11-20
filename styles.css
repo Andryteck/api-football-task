@@ -1,0 +1,73 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+button {
+    border-radius: 5px;
+    padding: 12px 15px;
+    box-sizing: border-box;
+    cursor: pointer;
+    color: inherit;
+    border: none;
+    margin: 0 auto;
+    background-color: deepskyblue;
+}
+
+button:hover {
+    background-color: #f0d8d9;
+}
+
+.wrapper {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: whitesmoke;
+}
+
+.team-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.team {
+    width: 500px;
+    height: 40px;
+    border: 2px solid deepskyblue;
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.team:hover {
+    background-color: #f0d8d9;
+
+}
+
+.team-data-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.team-data-wrapper > div {
+    margin-top: 5px;
+}
+
+.team-data {
+    width: 500px;
+    height: 40px;
+    border: 2px solid deepskyblue;
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hidden {
+    display: none;
+}
