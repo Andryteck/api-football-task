@@ -26,11 +26,23 @@ button:hover {
     align-items: center;
     background-color: whitesmoke;
 }
-
+.team-data-wrapper {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    padding: 20px;
+}
 .team-wrapper {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+}
+
+.team-data-info {
+
+}
+.team-data-info > div {
+    margin-top: 10px;
 }
 
 .team {
@@ -48,12 +60,6 @@ button:hover {
 
 }
 
-.team-data-wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-}
-
 .team-data-wrapper > div {
     margin-top: 5px;
 }
@@ -64,6 +70,16 @@ button:hover {
     border: 2px solid deepskyblue;
     margin-top: 8px;
     display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.match-list-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    border: 2px solid deepskyblue;
+    margin-top: 25px;
     align-items: center;
     justify-content: center;
 }
