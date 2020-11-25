@@ -4,7 +4,7 @@ const teamsData = document.querySelector('#team-data');
 const getTeamBtn = document.querySelector('#getTeam');
 
 
-const FOOTBALL_DATA_URL = 'http://api.football-data.org/v2';
+const FOOTBALL_DATA_URL = 'https://api.football-data.org/v2';
 
 const getTeams = async () => {
   try {
