@@ -12,6 +12,9 @@ const getTeams = async () => {
       headers: {
         'X-Auth-Token': '15a24cc3edfb4c64a66c0214e356ebe7',
         'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET,POST',
+        'Access-Control-Max-Age': '1000',
+        'Access-Control-Allow-Headers': '*',
       },
       type: 'GET',
     });
