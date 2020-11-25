@@ -11,6 +11,7 @@ const getTeams = async () => {
     const res = await fetch(`${FOOTBALL_DATA_URL}/competitions/2017/teams`, {
       headers: {
         'X-Auth-Token': '15a24cc3edfb4c64a66c0214e356ebe7',
+        'Access-Control-Allow-Origin': '*',
       },
       type: 'GET',
     });
@@ -25,6 +26,7 @@ const getMatchlistCurrent = async (id) => {
     const res = await fetch(`${FOOTBALL_DATA_URL}/teams/${id}/matches`, {
       headers: {
         'X-Auth-Token': '15a24cc3edfb4c64a66c0214e356ebe7',
+        'Access-Control-Allow-Origin': '*',
       },
       type: 'GET',
     });
@@ -67,7 +69,7 @@ const createLayoutByTeams = (data) => {
 `;
       // create match list info by team
       const teamListHeader = document.createElement('p');
-      teamListHeader.innerText = 'Current matches:'
+      teamListHeader.innerText = 'Current matches:';
       const teamList = document.createElement('div');
       teamList.classList.add('match-list-wrapper');
       teamsData.appendChild(teamListHeader);

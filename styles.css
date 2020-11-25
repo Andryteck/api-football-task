@@ -26,12 +26,14 @@ button:hover {
     align-items: center;
     background-color: whitesmoke;
 }
+
 .team-data-wrapper {
     display: none;
     flex-direction: column;
     width: 100%;
     padding: 20px;
 }
+
 .team-wrapper {
     display: flex;
     flex-direction: column;
@@ -41,6 +43,7 @@ button:hover {
 .team-data-info {
 
 }
+
 .team-data-info > div {
     margin-top: 10px;
 }
@@ -57,7 +60,7 @@ button:hover {
 
 .team:hover {
     background-color: #f0d8d9;
-
+    cursor: pointer;
 }
 
 .team-data-wrapper > div {
