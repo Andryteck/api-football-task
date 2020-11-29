@@ -2,7 +2,7 @@ const wrapper = document.querySelector('#wrapper');
 const teams = document.querySelector('#teams');
 const teamsData = document.querySelector('#team-data');
 const refresh = document.querySelector('#refresh');
-
+const loader = document.querySelector('.loader');
 
 const FOOTBALL_DATA_URL = 'https://api.football-data.org/v2';
 
@@ -36,7 +36,7 @@ const showPage = () => {
   getTeams()
     .then(createLayoutByTeams);
 
-  document.querySelector('.loader').style.display = 'none';
+  loader.style.display = 'none';
 };
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -58,13 +58,18 @@ const createLayoutByTeams = (data) => {
 
     // create team data
     team.addEventListener('click', () => {
+      loader.style.display = 'block';
       teams.classList.add('hidden');
       teamsData.style = 'display: flex';
+      refresh.className = 'hidden';
       // create team info
-      const teamInfo = document.createElement('div');
-      teamInfo.classList.add('team-data-info');
-      teamsData.appendChild(teamInfo);
-      teamInfo.innerHTML = `<div>Address:</div>
+      const createTeamInfo = () => {
+        loader.style.display = 'none';
+
+        const teamInfo = document.createElement('div');
+        teamInfo.classList.add('team-data-info');
+        teamsData.appendChild(teamInfo);
+        teamInfo.innerHTML = `<div>Address:</div>
             <div class="team-data" id="teamsData">${i.address}</div>
             <div>phone:</div>
             <div class="team-data" id="teamsData">${i.phone}</div>
@@ -73,27 +78,28 @@ const createLayoutByTeams = (data) => {
             <div>Country:</div>
             <div class="team-data" id="teamsData">${i.area.name}</div>
 `;
-      // create match list info by team
-      const teamListHeader = document.createElement('p');
-      teamListHeader.innerText = 'Current matches:';
-      const teamList = document.createElement('div');
-      teamList.classList.add('match-list-wrapper');
-      teamsData.appendChild(teamListHeader);
-      teamsData.appendChild(teamList);
-      refresh.className = 'hidden';
+        // create match list info by team
+        const teamListHeader = document.createElement('p');
+        teamListHeader.innerText = 'Current matches:';
+        const teamList = document.createElement('div');
+        teamList.classList.add('match-list-wrapper');
+        teamsData.appendChild(teamListHeader);
+        teamsData.appendChild(teamList);
 
-      getMatchlistCurrent(i.id)
-        .then(teamInfo => {
-          teamInfo.matches.forEach(item => {
-            const teamListItem = document.createElement('div');
-            teamList.appendChild(teamListItem);
-            return teamListItem.innerHTML +=
-              `<ul>
+        getMatchlistCurrent(i.id)
+          .then(teamInfo => {
+            teamInfo.matches.forEach(item => {
+              const teamListItem = document.createElement('div');
+              teamList.appendChild(teamListItem);
+              return teamListItem.innerHTML +=
+                `<ul>
               <li>${item.homeTeam.name} - ${item.awayTeam.name}</li>
                </ul>   
 `;
+            });
           });
-        });
+      };
+      setTimeout(createTeamInfo, 3000);
     });
   });
 };
