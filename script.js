@@ -1,7 +1,7 @@
 const wrapper = document.querySelector('#wrapper');
 const teams = document.querySelector('#teams');
 const teamsData = document.querySelector('#team-data');
-const getTeamBtn = document.querySelector('#getTeam');
+const refresh = document.querySelector('#refresh');
 
 
 const FOOTBALL_DATA_URL = 'https://api.football-data.org/v2';
@@ -11,9 +11,7 @@ const getTeams = async () => {
     const res = await fetch(`${FOOTBALL_DATA_URL}/competitions/2017/teams`, {
       headers: {
         'X-Auth-Token': '15a24cc3edfb4c64a66c0214e356ebe7',
-        'Access-Control-Allow-Origin': '*',
-      },
-      type: 'GET',
+      }
     });
     return res.json();
   } catch (e) {
@@ -26,9 +24,7 @@ const getMatchlistCurrent = async (id) => {
     const res = await fetch(`${FOOTBALL_DATA_URL}/teams/${id}/matches`, {
       headers: {
         'X-Auth-Token': '15a24cc3edfb4c64a66c0214e356ebe7',
-        'Access-Control-Allow-Origin': '*',
-      },
-      type: 'GET',
+      }
     });
     return res.json();
   } catch (e) {
@@ -36,9 +32,13 @@ const getMatchlistCurrent = async (id) => {
   }
 };
 
-getTeamBtn.addEventListener('click', () => {
+window.addEventListener('DOMContentLoaded', () => {
   getTeams()
     .then(createLayoutByTeams);
+});
+
+refresh.addEventListener('click', () => {
+  document.location.reload();
 });
 
 const createLayoutByTeams = (data) => {
@@ -48,7 +48,7 @@ const createLayoutByTeams = (data) => {
     team.innerText = i.name;
     teams.appendChild(team);
     team.className = 'team';
-    getTeamBtn.className = 'hidden';
+    refresh.className = 'refresh-button';
 
     // create team data
     team.addEventListener('click', () => {
@@ -74,6 +74,8 @@ const createLayoutByTeams = (data) => {
       teamList.classList.add('match-list-wrapper');
       teamsData.appendChild(teamListHeader);
       teamsData.appendChild(teamList);
+      refresh.className = 'hidden';
+
       getMatchlistCurrent(i.id)
         .then(teamInfo => {
           teamInfo.matches.forEach(item => {

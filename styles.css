@@ -1,6 +1,7 @@
 body {
     margin: 0;
     padding: 0;
+    position: relative;
 }
 
 button {
@@ -10,8 +11,13 @@ button {
     cursor: pointer;
     color: inherit;
     border: none;
-    margin: 0 auto;
     background-color: deepskyblue;
+}
+
+.refresh-button {
+    position: absolute;
+    top: 30px;
+    left: 30px;
 }
 
 button:hover {
@@ -38,10 +44,7 @@ button:hover {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-}
-
-.team-data-info {
-
+    margin: 15px 0;
 }
 
 .team-data-info > div {
@@ -85,6 +88,18 @@ button:hover {
     margin-top: 25px;
     align-items: center;
     justify-content: center;
+}
+
+.match-list-wrapper > div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border-bottom: 2px solid deepskyblue;
+    font-size: 20px;
+}
+
+.match-list-wrapper > div ul li {
+    list-style: none;
 }
 
 .hidden {
